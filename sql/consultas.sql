@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def rodar_pipeline():
-    print("\n🚀 Iniciando Pipeline de Dados IoT...")
+    print("\n Iniciando Pipeline de Dados IoT...")
 
     # Configurações do Banco de Dados (Docker)
     DB_USER = os.getenv('DB_USER', 'postgres')
@@ -25,10 +25,10 @@ def rodar_pipeline():
         caminho_csv = 'IOT-temp.csv'
         
         if not os.path.exists(caminho_csv):
-            print(f"❌ Erro: O arquivo {caminho_csv} não foi encontrado!")
+            print(f" Erro: O arquivo {caminho_csv} não foi encontrado!")
             return
 
-        print(f"📖 Lendo arquivo {caminho_csv}...")
+        print(f" Lendo arquivo {caminho_csv}...")
         df = pd.read_csv(caminho_csv)
 
         # 3. Limpeza e Tratamento de Dados
@@ -57,7 +57,7 @@ def rodar_pipeline():
         print("✅ Dados enviados com sucesso!")
 
     except Exception as e:
-        print(f"❌ Erro no pipeline: {e}")
+        print(f" Erro no pipeline: {e}")
 
     finally:
         # 5. Fechamento Seguro da Conexão
@@ -65,7 +65,7 @@ def rodar_pipeline():
         print("✅ Conexões liberadas com sucesso!")
 
     # 6. Resumo Final no Terminal
-    print(f"\n📊 RESUMO DO PROCESSO:")
+    print(f"\n RESUMO DO PROCESSO:")
     print(f"Total de registros processados: {len(df):,}")
     print(f"Colunas finais: {list(df.columns)}")
     print("-" * 30)
