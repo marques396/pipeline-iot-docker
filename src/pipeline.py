@@ -1,10 +1,15 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
+import os
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente
+load_dotenv()
 
 # ============================================
 # 🔌 CONEXÃO COM O BANCO (DOCKER) 
 # ============================================
-engine = create_engine('postgresql://postgres:admin123@localhost:5432/postgres')
+engine = create_engine(os.getenv("DATABASE_URL"))
 
 def rodar_pipeline():
     print("\n Iniciando Pipeline de Dados IoT Turbinado...\n")

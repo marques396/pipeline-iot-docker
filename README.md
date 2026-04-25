@@ -42,7 +42,7 @@ Siga os passos abaixo para configurar o ambiente e visualizar os dados:
 1. ## Configuração do Banco de Dados (Docker)
 Com o Docker Desktop aberto, execute o comando abaixo no terminal para subir o container do PostgreSQL com a senha configurada:
 
-`docker run --name postgres-iot -e POSTGRES_PASSWORD=admin123 -p 5432:5432 -d postgres`
+`docker run --name postgres-db -e POSTGRES_PASSWORD=suasenhaaqui -p 5432:5432 -d postgres`
 
 
 2. ## Instalação de Dependências
@@ -61,4 +61,4 @@ Execute o script principal para realizar a limpeza dos dados, carga no banco e c
 Inicie a interface gráfica do Streamlit para abrir o Dashboard interativo no seu navegador:
 
 
- `streamlit run src/app.py`
+ `python -m streamlit run src/app.py`
