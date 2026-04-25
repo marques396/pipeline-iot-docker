@@ -2,16 +2,21 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
+import os
+from dotenv import load_dotenv
+
+# 1. Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
+# 2. Recupera a URL de conexão protegida
+db_url = os.getenv("DATABASE_URL")
 
 # ==========================================
-# 🔌 CONEXÃO COM BANCO (PostgreSQL)
+# 🔌 CONEXÃO COM BANCO (PROTEGIDA)
 # ==========================================
-# Mantendo SUA senha e porta
-engine = create_engine('postgresql://postgres:admin123@localhost:5432/postgres')
+# Seguindo as boas práticas de segurança, a senha é carregada via .env
+engine = create_engine(db_url)
 
-# ================================
-#   CACHE (PERFORMANCE)
-# ================================
 @st.cache_data(ttl=60)
 def load_data(view_name):
     return pd.read_sql(f"SELECT * FROM {view_name}", engine)
